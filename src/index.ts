@@ -3,11 +3,13 @@ loadEnv();
 
 import express, { type Request, type Response } from "express";
 import { pool } from "./db/db.js";
+import usersRouter from "./routes/user.route.js";
 
 const app = express();
 const PORT = Number(process.env.PORT) || 3000;
 
 app.use(express.json());
+app.use("/users", usersRouter);
 
 app.get("/", (req: Request, res: Response) => {
   res.send("Hello from TypeScript backend!");
