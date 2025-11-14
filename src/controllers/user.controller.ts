@@ -19,7 +19,7 @@ export const getUsersHandler = async (_req: Request, res: Response) => {
 
 export const getUserByIdHandler = async (req: Request, res: Response) => {
   try {
-    const { id } = req.params ?? {};
+    const id = req.params.id;
     if (!id) return res.status(400).json({ error: "ID PARAMETER IS REQUIRED" });
     const user = await getUser(id);
     if (!user) return res.status(404).json({ error: "USER NOT FOUND" });
@@ -49,7 +49,7 @@ export const createUserHandler = async (req: Request, res: Response) => {
 
 export const updateUserHandler = async (req: Request, res: Response) => {
   try {
-    const { id } = req.params ?? {};
+    const id = req.params.id;
     if (!id) return res.status(400).json({ error: "ID PARAMETER IS REQUIRED" });
     const user = await updateUser(id, req.body ?? {});
     if (!user) return res.status(404).json({ error: "USER NOT FOUND" });
@@ -65,7 +65,7 @@ export const updateUserHandler = async (req: Request, res: Response) => {
 
 export const deleteUserHandler = async (req: Request, res: Response) => {
   try {
-    const { id } = req.params ?? {};
+    const id = req.params.id;
     if (!id) return res.status(400).json({ error: "ID PARAMETER IS REQUIRED" });
     const ok = await removeUser(id);
     if (!ok) return res.status(404).json({ error: "USER NOT FOUND" });
