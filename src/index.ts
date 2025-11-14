@@ -5,6 +5,7 @@ import express, { type Request, type Response } from "express";
 import { pool } from "./db/db.js";
 import usersRouter from "./routes/user.route.js";
 import addressRouter from "./routes/address.route.js";
+import categoriesRouter from "./routes/category.route.js";
 
 const app = express();
 const PORT = Number(process.env.PORT) || 3000;
@@ -12,6 +13,7 @@ const PORT = Number(process.env.PORT) || 3000;
 app.use(express.json());
 app.use("/users", usersRouter);
 app.use("/addresses", addressRouter);
+app.use("/categories", categoriesRouter);
 
 app.get("/", (req: Request, res: Response) => {
   res.send("Hello from TypeScript backend!");
