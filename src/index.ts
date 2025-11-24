@@ -6,6 +6,11 @@ import { pool } from "./db/db.js";
 import usersRouter from "./routes/user.route.js";
 import addressRouter from "./routes/address.route.js";
 import categoriesRouter from "./routes/category.route.js";
+import productsRouter from "./routes/product.route.js";
+import productVariantsRouter from "./routes/productVariant.route.js";
+import variantOptionsRouter from "./routes/variantOption.route.js";
+import productSkuInventoryRouter from "./routes/productSkuInventory.route.js";
+import skuVariantOptionRouter from "./routes/skuVariantOption.route.js";
 
 const app = express();
 const PORT = Number(process.env.PORT) || 3000;
@@ -14,6 +19,11 @@ app.use(express.json());
 app.use("/users", usersRouter);
 app.use("/addresses", addressRouter);
 app.use("/categories", categoriesRouter);
+app.use("/products", productsRouter);
+app.use("/product-variants", productVariantsRouter);
+app.use("/variant-options", variantOptionsRouter);
+app.use("/product-sku-inventory", productSkuInventoryRouter);
+app.use("/sku-variant-options", skuVariantOptionRouter);
 
 app.get("/", (req: Request, res: Response) => {
   res.send("Hello from TypeScript backend!");
